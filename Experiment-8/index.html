@@ -1,0 +1,90 @@
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Lab 8 - RSVP Form (Bootstrap)</title> 
+<link rel="stylesheet" href="vendor/bootstrap.min.css"> 
+<style> 
+  body { background: #f4f6f8; padding: 40px 0; } 
+  .rsvp-card { 
+    max-width: 550px; 
+    margin: 0 auto; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    border: none; 
+  } 
+  .card-header { 
+    background: linear-gradient(135deg, #6a11cb, #2575fc); 
+    color: white; 
+    text-align: center; 
+    padding: 25px; 
+  } 
+</style> 
+</head> 
+<body> 
+  <div class="card rsvp-card"> 
+    <div class="card-header"> 
+      <h2 class="mb-0">You're Invited!</h2> 
+      <p class="mb-0">Please RSVP for the Annual Alumni Meet</p> 
+    </div> 
+    <div class="card-body p-4"> 
+      <form> 
+        <div class="mb-3"> 
+ <label class="form-label">Full Name</label> 
+          <input type="text" class="form-control" placeholder="Enter your name"> 
+        </div> 
+  
+        <div class="mb-3"> 
+          <label class="form-label">Email Address</label> 
+          <input type="email" class="form-control" placeholder="you@example.com"> 
+        </div> 
+  
+        <div class="mb-3"> 
+          <label class="form-label">Will you attend?</label> 
+          <div class="form-check"> 
+            <input class="form-check-input" type="radio" name="attend" id="attendYes" checked> 
+            <label class="form-check-label" for="attendYes">Joyfully Accept</label> 
+          </div> 
+          <div class="form-check"> 
+            <input class="form-check-input" type="radio" name="attend" id="attendNo"> 
+            <label class="form-check-label" for="attendNo">Regretfully Decline</label> 
+          </div> 
+        </div> 
+  
+        <div class="mb-3"> 
+          <label class="form-label">Number of Guests</label> 
+          <select class="form-select"> 
+            <option>Just Me</option> 
+            <option selected>Me + 1</option> 
+            <option>Me + 2</option> 
+            <option>Me + 3</option> 
+          </select> 
+        </div> 
+  
+        <div class="mb-3"> 
+          <label class="form-label">Meal Preference</label> 
+          <div class="form-check form-check-inline"> 
+            <input class="form-check-input" type="checkbox" id="veg" checked> 
+            <label class="form-check-label" for="veg">Vegetarian</label> 
+          </div> 
+          <div class="form-check form-check-inline"> 
+            <input class="form-check-input" type="checkbox" id="nonveg"> 
+            <label class="form-check-label" for="nonveg">Non-Vegetarian</label> 
+          </div> 
+          <div class="form-check form-check-inline"> 
+            <input class="form-check-input" type="checkbox" id="vegan"> 
+            <label class="form-check-label" for="vegan">Vegan</label> 
+          </div> 
+        </div> 
+  
+        <div class="mb-3"> 
+          <label class="form-label">Message for the Host</label> 
+          <textarea class="form-control" rows="3" placeholder="Write a short message"></textarea> 
+        </div> 
+  
+        <div class="d-grid"> 
+          <button type="submit" class="btn btn-primary btn-lg">Send RSVP</button> 
+        </div> 
+      </form> 
+    </div> 
+  </div> 
+</body> 
+</html>
