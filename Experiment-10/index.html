@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lab 10 - AJAX Content Loading with jQuery Effects</title>
+
+<script src="vendor/jquery.min.js"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f5;
+    padding: 30px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background: white;
+    width: 550px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 0;
+}
+
+.btn-group {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+button {
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #21618c;
+}
+
+#contentBox {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px 18px;
+    min-height: 140px;
+    background: #f9fbfd;
+}
+
+#contentBox .article {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6eaee;
+}
+
+#contentBox .article h4 {
+    margin: 0 0 4px;
+    color: #2980b9;
+}
+
+#contentBox .article p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+#loader {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Dynamic News Loader (AJAX + jQuery)</h2>
+
+<div class="btn-group">
+    <button id="loadBtn">Load Content (AJAX)</button>
+    <button id="fadeOutBtn">Fade Out</button>
+    <button id="fadeInBtn">Fade In</button>
+</div>
+
+<div id="contentBox">
+    <p id="loader">Click "Load Content" to fetch articles...</p>
+</div>
+
+</div>
+
+<script>
+
+// Simulated server-side data
+const serverData = [
+    {
+        title: "New Campus Library Opens",
+        body: "The university inaugurated its new digital library with over 50,000 e-resources."
+    },
+    {
+        title: "Tech Fest 2026 Announced",
+        body: "Annual technical festival will be held in September featuring hackathons and workshops."
+    },
+    {
+        title: "Placement Drive Results",
+        body: "Over 85% of the graduating batch received placement offers this year."
+    }
+];
+
+// Simulates an AJAX call
+function fetchDataFromServer(callback) {
+
+    $("#loader").text("Loading content from server...");
+
+    setTimeout(function() {
+        callback(serverData);
+    }, 800);
+}
+
+// Display articles
+function renderArticles(data) {
+
+    let html = "";
+
+    data.forEach(item => {
+
+        html += `
+            <div class="article">
+                <h4>${item.title}</h4>
+                <p>${item.body}</p>
+            </div>
+        `;
+
+    });
+
+    $("#contentBox").html(html);
+}
+
+$(document).ready(function() {
+
+    // Load Content button
+    $("#loadBtn").click(function() {
+
+        $("#contentBox").fadeOut(200, function() {
+
+            fetchDataFromServer(function(data) {
+
+                renderArticles(data);
+
+                $("#contentBox").fadeIn(600);
+
+            });
+
+        });
+
+    });
+
+    // Fade Out button
+    $("#fadeOutBtn").click(function() {
+        $("#contentBox").fadeOut(600);
+    });
+
+    // Fade In button
+    $("#fadeInBtn").click(function() {
+        $("#contentBox").fadeIn(600);
+    });
+
+    // Automatically load content when page loads
+    fetchDataFromServer(function(data) {
+
+        renderArticles(data);
+
+        $("#contentBox").hide().fadeIn(800);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
