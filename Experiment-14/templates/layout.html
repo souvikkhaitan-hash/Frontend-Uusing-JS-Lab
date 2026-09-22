@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MyCompany - {% block title %}Home{% endblock %}</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f7f9fb;
+            color: #2c3e50;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .navbar {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+        }
+
+        .brand {
+            color: #f1c40f;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .navbar nav a:hover {
+            color: #f1c40f;
+        }
+
+        main {
+            max-width: 900px;
+            min-height: 300px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 13px;
+        }
+
+        footer .developer {
+            color: #95a5a6;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar">
+
+            <div class="brand">
+                MyCompany
+            </div>
+
+            <nav>
+                <a href="{% block nav_home %}#{% endblock %}">Home</a>
+                <a href="{% block nav_about %}#{% endblock %}">About Us</a>
+                <a href="{% block nav_contact %}#{% endblock %}">Contact Us</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        {% block content %}
+
+        <div class="content-box">
+            <h2>Welcome to MyCompany</h2>
+
+            <p>
+                Default page content goes here.
+            </p>
+        </div>
+
+        {% endblock %}
+
+    </main>
+
+    <footer>
+
+        <div>
+            © 2026 MyCompany. All Rights Reserved.
+        </div>
+
+        <div class="developer">
+            Developed by Web Technology Lab Team |
+            Contact: dev-team@example.com
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
